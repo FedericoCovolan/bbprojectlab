@@ -122,11 +122,16 @@
     width: 100%;
   }
 
+  .options-grid.three-cols {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
   .opt-card {
     background: rgba(255,255,255,0.1);
     border: 2px solid transparent;
     border-radius: 18px;
-    padding: 18px 10px 14px;
+    padding: 18px 6px 14px;
     cursor: pointer;
     text-align: center;
     display: flex;
@@ -141,10 +146,12 @@
   .opt-card:active { transform: scale(0.95); }
   .opt-card.selected { border-color: var(--white); background: rgba(255,255,255,0.18); }
 
-  .opt-label { font-size: 14px; font-weight: 800; color: var(--white); text-transform: uppercase; letter-spacing: 0.07em; }
-  .opt-sub { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 0.02em; }
+  .opt-label { font-size: 13px; font-weight: 800; color: var(--white); text-transform: uppercase; letter-spacing: 0.05em; }
+  .opt-sub { font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 0.02em; }
 
-  .swatch { width: 54px; height: 54px; border-radius: 13px; overflow: hidden; border: 1.5px solid rgba(255,255,255,0.18); }
+  .swatch { width: 54px; height: 54px; border-radius: 13px; overflow: hidden; border: 1.5px solid rgba(255,255,255,0.18); display: flex; align-items: center; justify-content: center; }
+  
+  .swatch.no-border { border: none; background: transparent; }
 
   .bead-row { display: flex; gap: 5px; align-items: center; justify-content: center; height: 54px; }
   .bead { width: 15px; height: 15px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.3); flex-shrink: 0; }
@@ -173,13 +180,72 @@
     <div class="bottom-area">
       <button class="cta-btn always" onclick="go('s1')">inizia ★</button>
       <div class="dots">
-        <div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
       </div>
     </div>
   </div>
 </div>
 
 <div class="screen" id="s1">
+  <div class="screen-inner">
+    <p class="big-title">che<br>capo<br><em>vuoi?</em></p>
+    <div class="options-wrap">
+      <div class="options-grid three-cols">
+
+        <div class="opt-card" onclick="pick('c','tshirt',this)">
+          <div class="swatch no-border">
+            <svg width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="10,18 2,8 0,22 10,28" fill="#FFF"/>
+              <polygon points="44,18 52,8 54,22 44,28" fill="#FFF"/>
+              <rect x="10" y="18" width="34" height="36" rx="2" fill="#FFF"/>
+              <path d="M18,18 Q27,24 36,18" fill="none" stroke="#E0E0E0" stroke-width="1"/>
+            </svg>
+          </div>
+          <span class="opt-label">t-shirt</span>
+          <span class="opt-sub">girocollo</span>
+        </div>
+
+        <div class="opt-card" onclick="pick('c','canotta',this)">
+          <div class="swatch no-border">
+            <svg width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16,8 L22,8 L22,20 L16,20 Z" fill="#FFF"/>
+              <path d="M32,8 L38,8 L38,20 L32,20 Z" fill="#FFF"/>
+              <rect x="14" y="20" width="26" height="34" rx="2" fill="#FFF"/>
+              <path d="M22,20 Q27,28 32,20" fill="none" stroke="#E0E0E0" stroke-width="1"/>
+              <line x1="20" y1="22" x2="20" y2="54" stroke="#F0F0F0" stroke-width="1"/>
+              <line x1="27" y1="22" x2="27" y2="54" stroke="#F0F0F0" stroke-width="1"/>
+              <line x1="34" y1="22" x2="34" y2="54" stroke="#F0F0F0" stroke-width="1"/>
+            </svg>
+          </div>
+          <span class="opt-label">canotta</span>
+          <span class="opt-sub">a coste</span>
+        </div>
+
+        <div class="opt-card" onclick="pick('c','bretelle',this)">
+          <div class="swatch no-border">
+            <svg width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg">
+              <line x1="18" y1="6" x2="18" y2="24" stroke="#FFF" stroke-width="2"/>
+              <line x1="36" y1="6" x2="36" y2="24" stroke="#FFF" stroke-width="2"/>
+              <rect x="14" y="24" width="26" height="30" rx="2" fill="#FFF"/>
+              <line x1="14" y1="24" x2="40" y2="24" stroke="#E0E0E0" stroke-width="1"/>
+            </svg>
+          </div>
+          <span class="opt-label">top</span>
+          <span class="opt-sub">bretelle</span>
+        </div>
+
+      </div>
+    </div>
+    <div class="bottom-area">
+      <button class="cta-btn" id="bc" onclick="go('s2')">avanti →</button>
+      <div class="dots">
+        <div class="dot done"></div><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="screen" id="s2">
   <div class="screen-inner">
     <p class="big-title">che<br>tessuto<br><em>vuoi?</em></p>
     <div class="options-wrap">
@@ -188,92 +254,92 @@
         <div class="opt-card" onclick="pick('f','cotone',this)">
           <div class="swatch">
             <svg width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg">
-              <rect width="54" height="54" fill="#F2EDE4"/>
-              <line x1="0" y1="9" x2="54" y2="9" stroke="#D8CEBC" stroke-width="1.2"/>
-              <line x1="0" y1="18" x2="54" y2="18" stroke="#D8CEBC" stroke-width="1.2"/>
-              <line x1="0" y1="27" x2="54" y2="27" stroke="#D8CEBC" stroke-width="1.2"/>
-              <line x1="0" y1="36" x2="54" y2="36" stroke="#D8CEBC" stroke-width="1.2"/>
-              <line x1="0" y1="45" x2="54" y2="45" stroke="#D8CEBC" stroke-width="1.2"/>
-              <line x1="9" y1="0" x2="9" y2="54" stroke="#D8CEBC" stroke-width="0.6"/>
-              <line x1="18" y1="0" x2="18" y2="54" stroke="#D8CEBC" stroke-width="0.6"/>
-              <line x1="27" y1="0" x2="27" y2="54" stroke="#D8CEBC" stroke-width="0.6"/>
-              <line x1="36" y1="0" x2="36" y2="54" stroke="#D8CEBC" stroke-width="0.6"/>
-              <line x1="45" y1="0" x2="45" y2="54" stroke="#D8CEBC" stroke-width="0.6"/>
+              <rect width="54" height="54" fill="#FFFFFF"/>
+              <line x1="0" y1="9" x2="54" y2="9" stroke="#F0F0F0" stroke-width="1.2"/>
+              <line x1="0" y1="18" x2="54" y2="18" stroke="#F0F0F0" stroke-width="1.2"/>
+              <line x1="0" y1="27" x2="54" y2="27" stroke="#F0F0F0" stroke-width="1.2"/>
+              <line x1="0" y1="36" x2="54" y2="36" stroke="#F0F0F0" stroke-width="1.2"/>
+              <line x1="0" y1="45" x2="54" y2="45" stroke="#F0F0F0" stroke-width="1.2"/>
+              <line x1="9" y1="0" x2="9" y2="54" stroke="#F0F0F0" stroke-width="0.6"/>
+              <line x1="18" y1="0" x2="18" y2="54" stroke="#F0F0F0" stroke-width="0.6"/>
+              <line x1="27" y1="0" x2="27" y2="54" stroke="#F0F0F0" stroke-width="0.6"/>
+              <line x1="36" y1="0" x2="36" y2="54" stroke="#F0F0F0" stroke-width="0.6"/>
+              <line x1="45" y1="0" x2="45" y2="54" stroke="#F0F0F0" stroke-width="0.6"/>
             </svg>
           </div>
           <span class="opt-label">cotone</span>
-          <span class="opt-sub">morbido, classico</span>
+          <span class="opt-sub">morbido, bianco puro</span>
         </div>
 
         <div class="opt-card" onclick="pick('f','raso',this)">
           <div class="swatch">
             <svg width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg">
-              <rect width="54" height="54" fill="#B8A0D0"/>
-              <path d="M-10,0 L64,54" stroke="rgba(255,255,255,0.45)" stroke-width="22"/>
-              <path d="M-30,0 L44,54" stroke="rgba(255,255,255,0.12)" stroke-width="10"/>
-              <path d="M10,0 L84,54" stroke="rgba(255,255,255,0.12)" stroke-width="10"/>
+              <rect width="54" height="54" fill="#FDFBFF"/>
+              <path d="M-10,0 L64,54" stroke="rgba(200,190,220,0.15)" stroke-width="22"/>
+              <path d="M-30,0 L44,54" stroke="rgba(255,255,255,0.8)" stroke-width="10"/>
+              <path d="M10,0 L84,54" stroke="rgba(255,255,255,0.8)" stroke-width="10"/>
             </svg>
           </div>
           <span class="opt-label">raso</span>
-          <span class="opt-sub">lucido, elegante</span>
+          <span class="opt-sub">lucido, perlato</span>
         </div>
 
         <div class="opt-card" onclick="pick('f','velluto',this)">
           <div class="swatch">
             <svg width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg">
-              <rect width="54" height="54" fill="#1C0F2E"/>
-              <circle cx="9" cy="9" r="2.5" fill="#3A1E5C" opacity="0.9"/>
-              <circle cx="27" cy="5" r="2.5" fill="#3A1E5C" opacity="0.9"/>
-              <circle cx="45" cy="9" r="2.5" fill="#3A1E5C" opacity="0.9"/>
-              <circle cx="3" cy="22" r="2.5" fill="#3A1E5C" opacity="0.9"/>
-              <circle cx="18" cy="20" r="2.5" fill="#3A1E5C" opacity="0.9"/>
-              <circle cx="36" cy="20" r="2.5" fill="#3A1E5C" opacity="0.9"/>
-              <circle cx="51" cy="22" r="2.5" fill="#3A1E5C" opacity="0.9"/>
-              <circle cx="9" cy="36" r="2.5" fill="#3A1E5C" opacity="0.9"/>
-              <circle cx="27" cy="34" r="2.5" fill="#3A1E5C" opacity="0.9"/>
-              <circle cx="45" cy="36" r="2.5" fill="#3A1E5C" opacity="0.9"/>
-              <circle cx="3" cy="49" r="2.5" fill="#3A1E5C" opacity="0.9"/>
-              <circle cx="18" cy="49" r="2.5" fill="#3A1E5C" opacity="0.9"/>
-              <circle cx="36" cy="49" r="2.5" fill="#3A1E5C" opacity="0.9"/>
+              <rect width="54" height="54" fill="#F9F6F0"/>
+              <circle cx="9" cy="9" r="2.5" fill="#E6DED0" opacity="0.6"/>
+              <circle cx="27" cy="5" r="2.5" fill="#E6DED0" opacity="0.6"/>
+              <circle cx="45" cy="9" r="2.5" fill="#E6DED0" opacity="0.6"/>
+              <circle cx="3" cy="22" r="2.5" fill="#E6DED0" opacity="0.6"/>
+              <circle cx="18" cy="20" r="2.5" fill="#E6DED0" opacity="0.6"/>
+              <circle cx="36" cy="20" r="2.5" fill="#E6DED0" opacity="0.6"/>
+              <circle cx="51" cy="22" r="2.5" fill="#E6DED0" opacity="0.6"/>
+              <circle cx="9" cy="36" r="2.5" fill="#E6DED0" opacity="0.6"/>
+              <circle cx="27" cy="34" r="2.5" fill="#E6DED0" opacity="0.6"/>
+              <circle cx="45" cy="36" r="2.5" fill="#E6DED0" opacity="0.6"/>
+              <circle cx="3" cy="49" r="2.5" fill="#E6DED0" opacity="0.6"/>
+              <circle cx="18" cy="49" r="2.5" fill="#E6DED0" opacity="0.6"/>
+              <circle cx="36" cy="49" r="2.5" fill="#E6DED0" opacity="0.6"/>
             </svg>
           </div>
           <span class="opt-label">velluto</span>
-          <span class="opt-sub">ricco, sensuale</span>
+          <span class="opt-sub">ricco, panna</span>
         </div>
 
         <div class="opt-card" onclick="pick('f','pizzo',this)">
           <div class="swatch">
             <svg width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg">
-              <rect width="54" height="54" fill="#FFF0F5"/>
-              <circle cx="14" cy="14" r="5" fill="none" stroke="#FFAACC" stroke-width="1.5"/>
-              <circle cx="40" cy="14" r="5" fill="none" stroke="#FFAACC" stroke-width="1.5"/>
-              <circle cx="14" cy="40" r="5" fill="none" stroke="#FFAACC" stroke-width="1.5"/>
-              <circle cx="40" cy="40" r="5" fill="none" stroke="#FFAACC" stroke-width="1.5"/>
-              <circle cx="27" cy="27" r="5" fill="none" stroke="#FFAACC" stroke-width="1.5"/>
-              <line x1="14" y1="14" x2="27" y2="27" stroke="#FFAACC" stroke-width="1"/>
-              <line x1="40" y1="14" x2="27" y2="27" stroke="#FFAACC" stroke-width="1"/>
-              <line x1="14" y1="40" x2="27" y2="27" stroke="#FFAACC" stroke-width="1"/>
-              <line x1="40" y1="40" x2="27" y2="27" stroke="#FFAACC" stroke-width="1"/>
+              <rect width="54" height="54" fill="#FFFAFC"/>
+              <circle cx="14" cy="14" r="5" fill="none" stroke="#FFE6EE" stroke-width="1.5"/>
+              <circle cx="40" cy="14" r="5" fill="none" stroke="#FFE6EE" stroke-width="1.5"/>
+              <circle cx="14" cy="40" r="5" fill="none" stroke="#FFE6EE" stroke-width="1.5"/>
+              <circle cx="40" cy="40" r="5" fill="none" stroke="#FFE6EE" stroke-width="1.5"/>
+              <circle cx="27" cy="27" r="5" fill="none" stroke="#FFE6EE" stroke-width="1.5"/>
+              <line x1="14" y1="14" x2="27" y2="27" stroke="#FFE6EE" stroke-width="1"/>
+              <line x1="40" y1="14" x2="27" y2="27" stroke="#FFE6EE" stroke-width="1"/>
+              <line x1="14" y1="40" x2="27" y2="27" stroke="#FFE6EE" stroke-width="1"/>
+              <line x1="40" y1="40" x2="27" y2="27" stroke="#FFE6EE" stroke-width="1"/>
             </svg>
           </div>
           <span class="opt-label">pizzo</span>
-          <span class="opt-sub">delicato, romantico</span>
+          <span class="opt-sub">delicato, avorio</span>
         </div>
 
       </div>
     </div>
     <div class="bottom-area">
-      <button class="cta-btn" id="bf" onclick="go('s2')">avanti →</button>
+      <button class="cta-btn" id="bf" onclick="go('s3')">avanti →</button>
       <div class="dots">
-        <div class="dot done"></div><div class="dot active"></div><div class="dot"></div><div class="dot"></div>
+        <div class="dot done"></div><div class="dot done"></div><div class="dot active"></div><div class="dot"></div><div class="dot"></div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="screen" id="s2">
+<div class="screen" id="s3">
   <div class="screen-inner">
-    <p class="big-title">che<br>colore<br><em>le perline?</em></p>
+    <p class="big-title">che<br>colore<br><em>le stelle?</em></p>
     <div class="options-wrap">
       <div class="options-grid">
 
@@ -330,13 +396,13 @@
     <div class="bottom-area">
       <button class="cta-btn" id="bb" onclick="showResult()">scopri la tua maglia ★</button>
       <div class="dots">
-        <div class="dot done"></div><div class="dot done"></div><div class="dot active"></div><div class="dot"></div>
+        <div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot active"></div><div class="dot"></div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="screen" id="s3">
+<div class="screen" id="s4">
   <div class="screen-inner">
     <p class="big-title">la tua<br>maglia<br><em>bb ★</em></p>
     <div class="tshirt-area">
@@ -347,20 +413,21 @@
       <p class="share-hint">★ condividi nelle storie ★</p>
       <button class="cta-btn always ghost" onclick="restart()">rifai il quiz</button>
       <div class="dots">
-        <div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot active"></div>
+        <div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot active"></div>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-const ch = {};
+const ch = { c: null, f: null, b: null };
 
+// Variazioni di bianco per i tessuti
 const FC = {
-  cotone:  ['#F2EDE4','#E6DFD2','#D6CFC0'],
-  raso:    ['#C0ABDC','#B098CC','#A088BC'],
-  velluto: ['#1C0F2E','#160B24','#0E071A'],
-  pizzo:   ['#FFF0F5','#FFE4EE','#FFD0E4']
+  cotone:  ['#FFFFFF','#F2F2F2','#E6E6E6'],
+  raso:    ['#FDFBFF','#F4EEFF','#EBE0FF'],
+  velluto: ['#F9F6F0','#F0EBE1','#E6DED0'],
+  pizzo:   ['#FFFAFC','#FFF0F5','#FFE6EE']
 };
 
 const BC = {
@@ -370,18 +437,17 @@ const BC = {
   multi:   [['#FF6B6B','#CC2020'],['#FFD93D','#CC8800'],['#6BCB77','#228830'],['#4D96FF','#1050CC'],['#C77DFF','#7020CC']]
 };
 
-const NM = {
-  cotone:  {oro:'cotton gold',argento:'cotton ice',rosa:'cotton candy',multi:'cotton rainbow'},
-  raso:    {oro:'satin glam', argento:'satin moon', rosa:'satin rose',  multi:'satin dream'},
-  velluto: {oro:'velvet gold',argento:'velvet dark',rosa:'velvet pink', multi:'velvet party'},
-  pizzo:   {oro:'lace gold',  argento:'lace frost', rosa:'lace love',   multi:'lace pop'}
+const Nomi = {
+  c: { tshirt: 'T-shirt', canotta: 'Canotta', bretelle: 'Top' },
+  f: { cotone: 'Cotone', raso: 'Raso', velluto: 'Velluto', pizzo: 'Pizzo' },
+  b: { oro: 'Gold', argento: 'Silver', rosa: 'Pink', multi: 'Pop' }
 };
 
 function pick(type, val, el) {
   ch[type] = val;
   el.closest('.screen').querySelectorAll('.opt-card').forEach(o => o.classList.remove('selected'));
   el.classList.add('selected');
-  document.getElementById(type === 'f' ? 'bf' : 'bb').classList.add('show');
+  document.getElementById('b' + type).classList.add('show');
 }
 
 function go(id) {
@@ -390,22 +456,66 @@ function go(id) {
 }
 
 function showResult() {
-  if (!ch.f || !ch.b) return;
+  if (!ch.c || !ch.f || !ch.b) return;
   const fc = FC[ch.f];
   const bc = BC[ch.b];
   const bx = [68,84,100,116,132];
+  
+  // Perline
   const defs = bc.map((c,i) => `<linearGradient id="g${i}" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="${c[0]}"/><stop offset="100%" stop-color="${c[1]}"/></linearGradient>`).join('');
-  const beads = bc.map((c,i) => `<circle cx="${bx[i]}" cy="160" r="6.5" fill="url(#g${i})" stroke="rgba(255,255,255,0.35)" stroke-width="1.2"/>`).join('');
-  const sc = fc[0] === '#1C0F2E' ? 'rgba(255,255,255,0.07)' : 'rgba(232,25,60,0.09)';
-  document.getElementById('rt').innerHTML = `<svg width="100%" height="100%" viewBox="0 0 200 225" xmlns="http://www.w3.org/2000/svg"><defs>${defs}</defs><polygon points="36,60 4,16 0,66 36,88" fill="${fc[1]}"/><polygon points="164,60 196,16 200,66 164,88" fill="${fc[1]}"/><rect x="36" y="60" width="128" height="157" rx="6" fill="${fc[0]}"/><path d="M68,60 Q100,80 132,60" fill="none" stroke="${fc[2]}" stroke-width="2"/><text x="100" y="148" text-anchor="middle" font-size="40" fill="${sc}">★</text>${beads}</svg>`;
-  document.getElementById('rn').textContent = (NM[ch.f][ch.b] + ' ★').toUpperCase();
-  go('s3');
+  const beads = bc.map((c,i) => `<circle cx="${bx[i]}" cy="160" r="6.5" fill="url(#g${i})" stroke="rgba(0,0,0,0.1)" stroke-width="1.2"/>`).join('');
+  
+  let svgShape = '';
+  
+  // Disegna il capo giusto
+  if (ch.c === 'tshirt') {
+    svgShape = `
+      <polygon points="36,60 4,16 0,66 36,88" fill="${fc[1]}"/>
+      <polygon points="164,60 196,16 200,66 164,88" fill="${fc[1]}"/>
+      <rect x="36" y="60" width="128" height="157" rx="6" fill="${fc[0]}"/>
+      <path d="M68,60 Q100,80 132,60" fill="none" stroke="${fc[2]}" stroke-width="2"/>
+    `;
+  } else if (ch.c === 'canotta') {
+    svgShape = `
+      <path d="M50,20 L74,20 L74,60 L50,60 Z" fill="${fc[1]}"/>
+      <path d="M126,20 L150,20 L150,60 L126,60 Z" fill="${fc[1]}"/>
+      <rect x="36" y="60" width="128" height="157" rx="6" fill="${fc[0]}"/>
+      <path d="M74,60 Q100,90 126,60" fill="none" stroke="${fc[2]}" stroke-width="2"/>
+      <g stroke="${fc[2]}" stroke-width="1" opacity="0.4">
+        <line x1="56" y1="70" x2="56" y2="217"/>
+        <line x1="76" y1="70" x2="76" y2="217"/>
+        <line x1="96" y1="70" x2="96" y2="217"/>
+        <line x1="116" y1="70" x2="116" y2="217"/>
+        <line x1="136" y1="70" x2="136" y2="217"/>
+      </g>
+    `;
+  } else if (ch.c === 'bretelle') {
+    svgShape = `
+      <line x1="60" y1="10" x2="60" y2="60" stroke="${fc[1]}" stroke-width="6"/>
+      <line x1="140" y1="10" x2="140" y2="60" stroke="${fc[1]}" stroke-width="6"/>
+      <rect x="36" y="60" width="128" height="157" rx="6" fill="${fc[0]}"/>
+      <line x1="36" y1="60" x2="164" y2="60" stroke="${fc[2]}" stroke-width="2"/>
+    `;
+  }
+
+  // Componi l'SVG
+  document.getElementById('rt').innerHTML = `
+    <svg width="100%" height="100%" viewBox="0 0 200 225" xmlns="http://www.w3.org/2000/svg">
+      <defs>${defs}</defs>
+      ${svgShape}
+      <text x="100" y="148" text-anchor="middle" font-size="40" fill="rgba(232,25,60,0.09)">★</text>
+      ${beads}
+    </svg>`;
+    
+  // Crea il nome finale (es. "T-SHIRT COTONE GOLD ★")
+  document.getElementById('rn').textContent = `${Nomi.c[ch.c]} ${Nomi.f[ch.f]} ${Nomi.b[ch.b]} ★`.toUpperCase();
+  go('s4');
 }
 
 function restart() {
-  ch.f = null; ch.b = null;
+  ch.c = null; ch.f = null; ch.b = null;
   document.querySelectorAll('.opt-card').forEach(o => o.classList.remove('selected'));
-  ['bf','bb'].forEach(id => document.getElementById(id).classList.remove('show'));
+  ['bc','bf','bb'].forEach(id => document.getElementById(id).classList.remove('show'));
   go('s0');
 }
 </script>
